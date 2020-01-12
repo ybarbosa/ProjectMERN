@@ -1,0 +1,14 @@
+version: "3"
+services: 
+  server: 
+    build: ./backend
+    command: npm run build
+    ports: 
+      - "9001:9001"
+    volumes: 
+      - .:/user
+  client: 
+    build: ./frontend
+    ports:
+      - "3000:3000"
+     

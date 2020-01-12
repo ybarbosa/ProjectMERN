@@ -1,0 +1,12 @@
+.buttonActive { 
+    color: #6610f2;
+    border-color: #6610f2;
+    &:hover{
+        background-color: #6610f2;
+        color: white;
+        border-color: white;
+    }
+};
+.toast {
+    max-width: none
+}
