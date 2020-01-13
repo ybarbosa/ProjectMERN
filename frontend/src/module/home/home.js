@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Col, Nav, NavItem, NavLink, TabContent, TabPane} from 'reactstrap'
 import HTTP from '../../config/http'
-import GateWay from './views/gateway'
-import Profile from './views/profile'
+import Posts from './screen/posts'
+import Profile from './screen/profile'
 
 export default function (props) {
     const styleContainer = {
@@ -53,7 +53,7 @@ export default function (props) {
         </Nav>
         <TabContent activeTab={activeTabs}>
             <TabPane tabId="1">
-                <GateWay userID = {location.state.id} />
+                <Posts userID = {location.state.id} />
             </TabPane>
             <TabPane tabId="2">
                 <Profile user = {user} />
