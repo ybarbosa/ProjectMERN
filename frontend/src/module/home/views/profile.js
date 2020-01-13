@@ -20,6 +20,7 @@ export default function ({user}) {
                 <Button outline color="danger" className=" col-lg-5  align-self-center flex-fill bd-highlight" onClick={toggle}>Excluir Conta</Button>
             </div>
       </ListGroup>
+      {
       <Modal isOpen={modal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 1300 }}
         toggle={toggle}>
         <ModalHeader toggle={toggle}>Exclusão de conta</ModalHeader>
@@ -31,5 +32,6 @@ export default function ({user}) {
           <Button color="secondary" onClick={toggle}>Cancel</Button>
         </ModalFooter>
       </Modal>
+      }
     </>
 }
