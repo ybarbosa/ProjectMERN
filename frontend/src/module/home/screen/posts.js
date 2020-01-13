@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Toast, ToastBody, ToastHeader, Row, Input, Button,Card, Alert ,Badge, CardText, InputGroupAddon, InputGroup} from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faUser } from '@fortawesome/free-solid-svg-icons'
-import "../styles/gateway.scss"
+import "../styles/posts.scss"
 import HTTP from '../../../config/http'
 
 
