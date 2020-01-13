@@ -22,6 +22,7 @@ const SignIn = () => {
       HTTP.defaults.headers['auth'] = auth
       const data = await HTTP.post('login', { email, password } )
       const [ { _id } ] = await data.data.user
+      localStorage.setItem('id', _id)
       setvisible( true )
       setUser( data )
       history.push({

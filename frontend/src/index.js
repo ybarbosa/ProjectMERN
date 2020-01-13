@@ -12,9 +12,10 @@ const PrivateRouterHome = ({component: Component, ...rest}) => (
     <Route 
         {...rest}
         render={props =>{
-            const AUTH = props.location.state ? true : false
-            if(AUTH) localStorage.getItem(props.location.state.email)
+            const AUTH = props.location.state || localStorage.key(0) ? true : false
             
+            if(!props.location.state || AUTH ) props.location.state = { email : localStorage.key(0), id: localStorage.getItem("id") }
+                
             return AUTH ? (
                 <Component {...props} />
             ) : (
@@ -22,7 +23,41 @@ const PrivateRouterHome = ({component: Component, ...rest}) => (
                 to={{
                 
                     pathname: "/login",
-                    state: { from: props.location }
+                    state: { from : props.location }
+                }}
+              />
+            )}
+        } 
+    />
+)
+const PrivateRouterLogin = ({component: Component, ...rest}) => (
+    <Route 
+        {...rest}
+        render={props =>{
+            const AUTH = !localStorage.key(0) ? true : false
+            return AUTH ? (
+                <Component {...props} />
+            ) : (
+              <Redirect 
+                to={{
+                    pathname: "/",
+                }}
+              />
+            )}
+        } 
+    />
+)
+const PrivateRouterSignUp = ({component: Component, ...rest}) => (
+    <Route 
+        {...rest}
+        render={props =>{
+            const AUTH = !localStorage.key(0) ? true : false
+            return AUTH ? (
+                <Component {...props} />
+            ) : (
+              <Redirect 
+                to={{
+                    pathname: "/",
                 }}
               />
             )}
@@ -34,8 +69,8 @@ const PrivateRouterHome = ({component: Component, ...rest}) => (
 ReactDOM.render(
     <Router history={history}> 
         <Switch>
-         <Route path="/login" exact  /*component={ SignIn } */  render={ (props ) => <SignIn {...props}  />} />
-         <Route path="/cadastro" component={ SignUp } />
+         <PrivateRouterLogin path="/login" exact component={ SignIn } />
+         <PrivateRouterSignUp path="/cadastro" component={ SignUp } />
          <PrivateRouterHome  exact path="/" component={ Home }/>
       </Switch> 
     </Router>, document.getElementById('root'));

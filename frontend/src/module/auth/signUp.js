@@ -33,9 +33,10 @@ const SignUp = ()=> {
             const user = await HTTP.post('users/create', { name , lastname, age, email, password })
             await setCreatedUser(user)
             await saveJWT(user.data.token, email)
+            localStorage.setItem('id',user.data.user._id)
             history.push({
                 pathname:'/',
-                state: { email }
+                state: { email, id: user.data.user._id }
               })
 
         }

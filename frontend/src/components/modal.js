@@ -1,17 +1,16 @@
 import React from 'react'
 import {Modal, ModalHeader, ModalBody, ModalFooter, Button} from 'reactstrap'
 
-export default function({isOpen, toggle}){
+export default function({isOpen, toggle, buttonNameAction, buttonNameCancel, colorButtonAction, colorButtonCancel,textModal, actionModal, headerModal }){
    return (
-        <Modal isOpen={modal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 1300 }}
-            toggle={toggle}>
-            <ModalHeader toggle={toggle}>Exclusão de conta</ModalHeader>
+        <Modal isOpen={isOpen} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 1300 }} toggle={toggle}>
+            <ModalHeader toggle={toggle}>{headerModal}</ModalHeader>
             <ModalBody>
-                Tem Certeza que deseja excluir sua conta?
+                {textModal}
             </ModalBody>
             <ModalFooter>
-            <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
-            <Button color="secondary" onClick={toggle}>Cancel</Button>
+                <Button color={colorButtonAction} onClick={actionModal}>{buttonNameAction}</Button>{' '}
+                <Button color={colorButtonCancel} onClick={toggle}>{buttonNameCancel}</Button>
             </ModalFooter>
         </Modal>
     )

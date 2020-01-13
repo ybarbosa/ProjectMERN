@@ -70,7 +70,6 @@ export default function ({userID}){
                 posts.map(value => 
                 
                 <Row key={value._id} className="mb-2">
-                    {console.log('valor', value)}
                     <Card body> 
                         <CardText>{value.post}</CardText>
                         <div>
