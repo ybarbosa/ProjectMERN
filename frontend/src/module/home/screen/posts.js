@@ -9,7 +9,7 @@ import HTTP from '../../../config/http'
 export default function ({userID}){
     const iconHeader = <FontAwesomeIcon icon={faEdit} /> 
     const [visableCommet, setComment ] = useState(false)
-    const [posts, setPosts] = useState(null)
+    const [posts, setPosts] = useState([])
     const [newPost, setNewPost] = useState('')
     const [newComment, setNewComment] = useState('')
     const fetchNewPost = (event)=> setNewPost(event.target.value)
@@ -63,9 +63,11 @@ export default function ({userID}){
         </Row>
 
                 {
-                !posts 
+                posts.length === 0
                 ? 
-                null
+                <Alert color="light"> 
+                    Nenhum postagem foi feita
+                </Alert>
                 : 
                 posts.map(value => 
                 
